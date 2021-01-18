@@ -1,6 +1,39 @@
 import React from "react";
-
+import Layout from "../../components/Layout";
+import {Container, Form ,Button,Row,Col} from 'react-bootstrap'
+import Input from '../../components/Ui/Input'
 const Signin = (props) => {
-  return <div>Signin</div>;
+  return(
+    <Layout>
+       <Container>
+       <Row style ={{marginTop:'50px'}} >
+            <Col md={{span:6 , offset:3}}>
+            <Form>
+            <Input   
+            Label= "Email"
+            placeholder ="Email"
+            value = ""
+            type = "email" 
+            onchange = {()=>{}}
+        />
+            
+            <Input   
+            Label= "Password"
+            placeholder ="Password"
+            value = ""
+            type = "password" 
+            onchange = {()=>{}}
+        />
+
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+            </Col>
+       </Row>
+      
+       </Container>
+    </Layout>
+    )
 };
 export default Signin;

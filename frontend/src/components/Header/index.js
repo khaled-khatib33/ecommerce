@@ -1,12 +1,13 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-
+import {NavLink ,Link} from "react-router-dom"
 export default function index() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Admin dashboard</Navbar.Brand>
+         { /* <Navbar.Brand href="#home">Admin dashboard</Navbar.Brand>*/}
+         <Link to = "/" className="navbar-brand">Admin dashboard </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
@@ -24,7 +25,16 @@ export default function index() {
            </NavDropdown>*/}
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">signini</Nav.Link>
+             { /* <Nav.Link href="#deets">signin</Nav.Link>*/}
+             <li className="nav-item">
+             <NavLink to = "signin" className="nav-link" > signin </NavLink>
+
+             </li>
+             <li className="nav-item">
+             <NavLink  to = "signup" className="nav-link" > signup </NavLink>
+
+             </li>
+
             </Nav>
           </Navbar.Collapse>
         </Container>

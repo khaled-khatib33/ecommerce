@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
       min: 3,
       max: 20,
     },
-    userName: {
+    username: {
       type: String,
       required: true,
       trim: true,
@@ -54,9 +54,6 @@ const userSchema = new mongoose.Schema(
 
 userSchema.virtual("fullName").get(function () {
   return `${this.firstName} ${this.lastName}`;
-});
-userSchema.virtual('fullName').get(function(){
-return `${this.firstName} ${this.lastName}`;
 });
 
 userSchema.methods = {

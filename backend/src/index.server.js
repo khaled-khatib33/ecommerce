@@ -13,12 +13,13 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use('/api', authRouts);
 app.use('/api', adminRouts);
 
-mongoose
-  .connect(process.env.mongodb, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex:true,
-  })
+mongoose.connect(
+  process.env.mongodb,
+     {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex:true,
+     })
 
   .then(() => {
     console.log("DB connected.........");
