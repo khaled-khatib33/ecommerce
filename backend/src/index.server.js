@@ -13,9 +13,12 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use('/api', authRouts);
 app.use('/api', adminRouts);
 
+let colection= "PPJ";
+let mlink= "mongodb+srv://Admin:123@cluster0.dwwx2.mongodb.net/" + colection;
+// connect DB
 mongoose.connect(
-  process.env.mongodb,
-     {
+  `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@khaledmongo.gdvmf.gcp.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
+  {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex:true,
@@ -26,13 +29,16 @@ mongoose.connect(
   })
   .catch((err) => console.log("DB not connected :" + err));
 
-
-app.get("/", (req, res, next) => {
-  res.status(200).json({ message: "hallo from khaled" });
+app.get('/', (req, res, next) => {
+  res.status(200).json({
+     message: "hallo from khaled"
+     });
 });
 
-app.post("/data", (req, res, next) => {
-  res.status(200).json({ message: req.body });
+app.post('/data', (req, res, next) => {
+  res.status(200).json({ 
+    message: req.body
+  });
 });
 
 app.listen(process.env.port, () => {
