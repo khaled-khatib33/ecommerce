@@ -2,15 +2,16 @@ import React from "react";
 import Layout from "../../components/Layout";
 import Input  from '../../components/Ui/Input'
 import {Container, Form ,Button,Row,Col } from 'react-bootstrap'
-
 const Signup = (props) => {
+
+ 
   return(
     
     <Layout>
     <Container>
     <Row style ={{marginTop:'50px'}} >
          <Col md={{span:6 , offset:3}}>
-         <Form>
+         <Form  >
                <Row>
                     <Col md={6}>
                    <Input   
