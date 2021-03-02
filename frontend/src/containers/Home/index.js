@@ -1,10 +1,30 @@
+
 import React from "react";
-import { Jumbotron } from "react-bootstrap";
+import { Row,Col, Container ,Jumbotron} from "react-bootstrap";
 import Layout from "../../components/Layout/index";
+import './style.css';
+import {NavLink } from 'react-router-dom'
 const Home = (props) => {
+
+  
   return (
     <Layout>
-      <Jumbotron
+       <Container fluid >
+       <Row>
+       <Col md={2} className="sidebar">
+       <ul>
+       <li><NavLink to={'/'} >Home</NavLink></li>
+       <li><NavLink to={'/products'} >products</NavLink></li>
+       <li><NavLink to={'/orders'} >orders</NavLink></li>
+
+       </ul>
+       </Col>
+       <Col md={10} style={{marginLeft:'auto'}}>container </Col>
+  
+       </Row>
+       </Container>
+     
+      {/*<Jumbotron
         style={{ margin: "srem", background: "#fff" }}
         className="text-center"
       >
@@ -21,7 +41,7 @@ const Home = (props) => {
           infancy. Various versions have evolved over the years, sometimes by
           accident, sometimes on purpose{" "}
         </p>
-      </Jumbotron>
+      </Jumbotron>*/}
     </Layout>
   );
 };

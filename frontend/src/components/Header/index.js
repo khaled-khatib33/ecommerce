@@ -1,11 +1,48 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import {NavLink ,Link} from "react-router-dom"
-export default function index() {
+import {NavLink ,Link} from "react-router-dom";
+import {useSelector,useDispatch} from 'react-redux';
+import { signout } from "../../actions";
+
+    const Header = (props)=>{
+    const auth = useSelector(state => state.auth)
+    const dispatch = useDispatch() ;
+    const logout = ()=>{
+      dispatch(signout());
+    }
+      const renderLoggedInlinks = () =>{
+        return ( 
+          <Nav>
+          <li className="nav-item">
+          <span  className="nav-link" onClick={logout}> signout </span>
+          </li>
+         </Nav>);
+              }
+               const renderNonLoggedInlinks =()=>{
+                 
+                return ( 
+                  <Nav>
+                  { /* <Nav.Link href="#deets">signin</Nav.Link>*/}
+                  <li className="nav-item">
+                  <NavLink to = "signin" className="nav-link" > signin </NavLink>
+     
+                  </li>
+                  <li className="nav-item">
+                  <NavLink  to = "signup" className="nav-link" > signup </NavLink>
+     
+                  </li>
+     
+                 </Nav>);
+
+                
+               }
+     
+  
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
+
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style = {{zIndex: 1}}>
+        <Container  fluid>
          { /* <Navbar.Brand href="#home">Admin dashboard</Navbar.Brand>*/}
          <Link to = "/" className="navbar-brand">Admin dashboard </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -24,21 +61,12 @@ export default function index() {
               </NavDropdown.Item>
            </NavDropdown>*/}
             </Nav>
-            <Nav>
-             { /* <Nav.Link href="#deets">signin</Nav.Link>*/}
-             <li className="nav-item">
-             <NavLink to = "signin" className="nav-link" > signin </NavLink>
-
-             </li>
-             <li className="nav-item">
-             <NavLink  to = "signup" className="nav-link" > signup </NavLink>
-
-             </li>
-
-            </Nav>
-          </Navbar.Collapse>
+            { auth.authenticate ? renderLoggedInlinks() : renderNonLoggedInlinks()} 
+         </Navbar.Collapse>
         </Container>
       </Navbar>
     </div>
   );
 }
+
+export default Header

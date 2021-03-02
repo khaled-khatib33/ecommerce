@@ -1,26 +1,28 @@
 const express = require("express");
 const app = express();
 const env = require("dotenv");
- const bodyparser = require("body-parser");
+const bodyparser = require("body-parser");
 const authRouts = require("./routes/auth");
 const adminRouts = require("./routes/admin/auth");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const carttRoutes = require("./routes/cart");
 const path = require('path');
-
+const cors = require('cors');
 const mongoose = require("mongoose");
 // enviroment
 env.config();
 
- app.use(bodyparser.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(cors());
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use("/api", authRouts);
 app.use('/public' , express.static(path.join(__dirname, 'uploads')));
 app.use("/api", adminRouts);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", carttRoutes);
+
 
 
 let colection = "PPJ";

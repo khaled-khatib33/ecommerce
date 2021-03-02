@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form} from 'react-bootstrap'
 
-const input = (props)=>{
+const Input = (props)=>{
 return(
     
     <Form.Group controlId="formBasicEmail">
@@ -13,11 +13,11 @@ return(
     onChange={props.onChange}
     />
     <Form.Text className="text-muted">
-                {props.errorMessage}  
-    </Form.Text>
+                 {props.errorMessage}  
+     </Form.Text>
   </Form.Group>
 
 )
 }
-export default  input
+export default  Input
    
